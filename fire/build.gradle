@@ -1,0 +1,16 @@
+plugins {
+  id 'com.palantir.docker' version '0.35.0'
+}
+
+apply plugin: 'application'
+
+project.version = '0.0.1'
+project.setProperty("mainClassName", "org.matruss.fire.Inspiration")
+
+dependencies {
+}
+
+jar {
+  from { configurations.chubbyjar.collect { it.isDirectory() ? it : zipTree(it) }}
+  zip64 true
+}
